@@ -1,6 +1,7 @@
 .heading2{
     color: #5E56E7;
     font-size: 30px;
+    font-family: Montserrat-semi-bold;
 }
 .header{
     background-color: white;
@@ -40,30 +41,24 @@
 }
 
 .book-title{
-    //line-height: 1.5em;
     max-height: 3em;
     margin-top: 1em;
     overflow: hidden;
-    // white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
     margin-bottom: 0;
 }
 .book-author{
     color: #A0A0A0;
-    font-size: 11px;
+    font-size: 12px;
     max-height: 3em;
     overflow: hidden;
-    // white-space: nowrap;
     text-overflow: ellipsis;
     margin-bottom: 0.5em;
 }
 .text-primary{
     color: #5e56e7!important;
-    /* position: absolute; */
-    /* left: auto; */
-    /* right: auto; */
     position: absolute;
      height: 50px; 
     width: 50px; 
@@ -107,9 +102,12 @@ input:focus{
 }
 
 
-@media (max-width:767px) and (min-width:576px) {
+@media (max-width:768px) and (min-width:576px) {
     .book-card{
         margin-bottom: 30px;
+    }
+    .book-author .book-title{
+        font-size: 11px;
     }
 }
 
@@ -117,4 +115,5 @@ input:focus{
     .book-card{
         margin-bottom: 20px;
     }
+   
 }
