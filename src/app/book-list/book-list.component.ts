@@ -89,8 +89,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   openBookPreview(formats)
   { 
     const url = formats[Object.keys(formats).find((el)=> el.startsWith('text'))];
-    const newUrl = (url.search('.zip')!== -1) ? ((url + url.substring(url.lastIndexOf('/'))).replace(/.zip/gi,'').replaceAll('-0','-h') + '.htm') : url;
-    console.log(url,newUrl);
+    const newUrl = (url.search('.zip')!== -1) ? ((url + url.substring(url.lastIndexOf('/'))).replace(/.zip/gi,'').replace(/-[0-9]/g,'-h') + '.htm') : url;
     window.open(newUrl,"_self");
   }
 
