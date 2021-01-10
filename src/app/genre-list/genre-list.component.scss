@@ -1,0 +1,25 @@
+
+.header{
+    background-image: url(../../assets/Pattern.svg);
+    padding: 1em 0em 1em 0em;
+    margin-bottom: 1em;
+}
+.genre-card{
+    border-radius : 4 px;
+    padding:0px 10px 0px 10px;
+    height : 50px;
+    box-shadow: 0 2px 5px 0 rgba(211, 209, 238, 0.5);
+    background-color: white;
+    font-size: 20px;
+    line-height: 43px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    img{
+    height: 20px;
+    margin: 0px 7px 3px 0px;
+    }
+}
+
+.genre-card:hover{
+    box-shadow: 0 2px 5px 0 rgba(93, 93, 109, 0.5); 
+}

@@ -1,0 +1,21 @@
+<div class="container-box">
+    <div class="header">
+      <div class="container">
+      <div class="row">
+        <div class="col-sm-12" style="margin: 0px 25px 0px 24px;">
+      <div class="heading1">Gutenberg Project</div>
+      <p>A social cataloging website that allows you to freely search its database of books, annotations,
+        and reviews.</p>
+      </div>
+      </div>
+    </div>
+    </div>
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12" *ngFor='let genre of genres' [routerLink]="['book-list', genre]">
+            <div class="genre-card "><img src="../../assets/{{genre | titlecase}}.svg"><span >{{genre | uppercase}}</span><span class="float-right"><img src="../assets/Next.svg"></span></div>
+          </div>
+    </div>
+    </div>
+    </div>

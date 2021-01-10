@@ -1,0 +1,32 @@
+<div class="container-box">
+    <div class="header">
+      <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+      <div class="heading2" > <img (click)="redirectToParent()" class="back-arrow-img" src='../../assets/Back.svg'>{{genre | titlecase}}</div>
+      <div class="form-group has-search">
+        <div class="search-icon" ><img  src="../../assets/Search.svg"></div>
+        <input (keyup)='keyUp.next($event)' type="text" class="form-control" placeholder="Search">
+      </div>
+      </div>
+      </div>
+    </div>
+    </div>
+      
+    <div class="container overflow-auto" (scroll)="onScroll($event)">
+      <div class="row">
+        <div *ngIf="booklist" style="display: contents;">
+        <div class="col-md-2 col-sm-2 col-4 book-card" *ngFor="let book of booklist">
+            <img (click)="openBookPreview(book.formats)" 
+            class="book-img" [src] = "book.formats['image/jpeg']?book.formats['image/jpeg']:'../../assets/NotAvailable.jpg'" />
+            <p class="book-title">{{book.title}}</p>
+            <p class="book-author" *ngIf="book.authors.length">{{book.authors[0].name}}</p>
+          </div>
+        </div>
+        <div *ngIf="showLoader" class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div *ngIf="noData && !showLoader" class="no-data"><img src="../../assets/search_no_result.png"></div>
+          </div>
+    </div>
+    </div>
