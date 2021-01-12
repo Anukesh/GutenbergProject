@@ -1,8 +1,9 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { debounceTime, delay, distinctUntilChanged, map, mergeMap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of, from, fromEvent, Subscription, Subject } from 'rxjs';
+import { debounceTime, delay, distinctUntilChanged, map } from 'rxjs/operators';
+// import { HttpClient } from '@angular/common/http';
+import { Subscription, Subject } from 'rxjs';
+import { BookListService } from './book-list.service';
 
 
 
@@ -25,7 +26,7 @@ export class BookListComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient
+    private bookListService: BookListService
   ) {
 
     this.subscribeInput = this.keyUp
@@ -57,13 +58,13 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   public getBookList(Url) {
     this.showLoader = true;
-    this.http.get(Url).subscribe((data: any) => {
+    this.bookListService.getBookList(Url).subscribe((data: any) => {
       this.bookData = data;
       this.booklist = this.booklist ? [...this.booklist, ...this.bookData.results] : this.bookData.results;
       console.log(this.bookData, Url);
       this.noData = this.booklist.length<=0;
     },
-    (err)=> {console.log(err); this.showLoader = false;},
+    (err)=> {},
     ()=> {
       this.showLoader = false;
     }
@@ -78,7 +79,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   @HostListener('scroll', ['$event'])
   public onScroll(event: any) {
     // visible height + pixel scrolled >= total height 
-    if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+    if (event.target.scrollTop>0 && event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
       if (this.bookData.next) {
         // this.bookUrl = this.bookData.next;
         this.getBookList(this.bookData.next);
